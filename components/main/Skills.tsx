@@ -17,7 +17,7 @@ const Skills = () => {
     >
       <SkillText />
 
-      <div className="flex flex-row justify-around flex-wrap md:mt-4 md:gap-5 items-center">
+      <div className="md:flex flex-row justify-around flex-wrap md:mt-4 md:gap-5 items-center hidden md:block">
         {Skill_data.map((image, index) => (
           <SkillDataProvider
             key={index}

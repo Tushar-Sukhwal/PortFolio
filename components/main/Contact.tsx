@@ -64,7 +64,7 @@ const Contact = () => {
         onSubmit={(e) => sendEmail(e)}
       >
         <div className="flex md:flex-row flex-col justify-around ">
-          <div className="flex flex-col md:w-[50%] pl-10 pr-10 pb-5 md:pb-0 pb-5">
+          <div className="flex flex-col md:w-[50%] pl-10 pr-10 md:pb-0 pb-5">
             <p className="text-white text-xs font-thin opacity-50 pb-3">
               First Name
             </p>
