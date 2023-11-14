@@ -14,32 +14,50 @@ const Contact = () => {
   const [message, setMessage] = useState("");
 
   const sendEmail = (e: any) => {
-    e.preventDefault();
+    try {
+      e.preventDefault();
 
-    emailjs
-      .sendForm(
-        "service_q8vdku4",
-        "template_ssqc8hg",
-        form.current,
-        "B873ChdBLgRbT98KY"
-      )
-      .then(
-        (result) => {
-          toast.success("Message Sent Successfully. I will contact you soon.");
-          setFirstName("");
-          setLastName("");
-          setEmail("");
-          setPhoneNo("");
-          setMessage("");
-        },
-        (error) => {
-          toast.error("Message Not Sent.");
-        }
-      );
+      if (
+        firstName === "" ||
+        lastName === "" ||
+        email === "" ||
+        phoneNo === "" ||
+        message === ""
+      ) {
+        toast.error("Please fill all the fields");
+        return;
+      }
+      emailjs
+        .sendForm(
+          "service_q8vdku4",
+          "template_ssqc8hg",
+          form.current,
+          "B873ChdBLgRbT98KY"
+        )
+        .then(
+          (result) => {
+            toast.success(
+              "Message Sent Successfully. I will contact you soon."
+            );
+            setFirstName("");
+            setLastName("");
+            setEmail("");
+            setPhoneNo("");
+            setMessage("");
+          },
+          (error) => {
+            toast.error("Message Not Sent.");
+          }
+        );
+    } catch (err) {
+      toast.error("Some error occured");
+    }
   };
   return (
     <section id="contact" className="z-[100]">
-      <div className=" text-center text-[40px] font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500 pt-20">Let&lsquo;s get in touch </div>
+      <div className=" text-center text-[40px] font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500 pt-20">
+        Let&lsquo;s get in touch{" "}
+      </div>
       <form
         ref={form}
         className=" bg-transparent flex flex-col md:w-[50%] w-[80%]  m-auto rounded-lg shadow-lg border border-[#2A0E61] py-10 mb-10"
