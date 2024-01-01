@@ -5,6 +5,8 @@ import StarsCanvas from "@/components/main/StarBackground";
 import Navbar from "@/components/main/Navbar";
 import Footer from "@/components/main/Footer";
 import { Toaster } from "react-hot-toast";
+import Script from "next/script";
+import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,16 +22,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" >
-      <body
-        className={`${inter.className} bg-[#030014] overflow-y-scroll overflow-x-hidden`}
-      >
-        <Toaster />
-        <StarsCanvas />
-        <Navbar />
-        {children}
-        <Footer />
-      </body>
-    </html>
+    <>
+      <Head>
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3242570291280498"
+        ></script>
+      </Head>
+      <html lang="en">
+        <body
+          className={`${inter.className} bg-[#030014] overflow-y-scroll overflow-x-hidden`}
+        >
+          <Toaster />
+          <StarsCanvas />
+          <Navbar />
+          {children}
+          <Footer />
+        </body>
+      </html>
+    </>
   );
 }
